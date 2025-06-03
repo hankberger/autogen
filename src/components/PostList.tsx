@@ -1,7 +1,8 @@
 // src/components/PostList.tsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Post, getAllPosts } from '../services/postService';
+import type { Post } from '../services/postService';
+import { getAllPosts } from '../services/postService';
 
 const PostList: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);

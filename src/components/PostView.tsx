@@ -1,7 +1,8 @@
 // src/components/PostView.tsx
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Post, getPostById, deletePost } from '../services/postService';
+import type { Post } from '../services/postService';
+import { getPostById, deletePost } from '../services/postService';
 
 const PostView: React.FC = () => {
   const { id } = useParams<{ id: string }>();

@@ -1,7 +1,8 @@
 // src/components/PostForm.tsx
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Post, PostData, getPostById, createPost, updatePost } from '../services/postService';
+import type { Post, PostData } from '../services/postService';
+import { getPostById, createPost, updatePost } from '../services/postService';
 
 interface PostFormProps {
   isEditMode?: boolean;
