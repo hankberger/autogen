@@ -9,7 +9,7 @@ const App: React.FC = () => {
   return (
     <>
       <nav className="navbar">
-        <Link to="/" className="nav-logo">My Blog</Link>
+        <Link to="/" className="nav-logo">testing</Link>
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/create-post">Create Post</Link></li>

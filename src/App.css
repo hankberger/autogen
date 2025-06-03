@@ -1,18 +1,24 @@
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
   background-color: #1a1a1a; /* Dark background */
   color: #e0e0e0; /* Light text */
 }
 
+#root{
+  width: 100%;
+}
+
 .container {
   max-width: 960px;
+  display: flex;
+  flex: 1 1 100%;
   margin: 20px auto;
   padding: 20px;
-  background-color: #242424; /* Slightly lighter dark shade */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Subtle dark theme shadow */
 }
 
 a {
@@ -47,7 +53,6 @@ button:disabled {
 
 /* Navbar */
 .navbar {
-  background-color: #1f1f1f; /* Distinct dark color for navbar */
   color: #e0e0e0; /* Light text for navbar */
   padding: 1rem 2rem;
   display: flex;
@@ -56,11 +61,26 @@ button:disabled {
 }
 
 .nav-logo {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #ffffff; /* Light color for nav logo */
-  font-weight: bold;
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+
+  color: white;
 }
 
+@keyframes slide-text-smooth {
+  /* Start and end at the same position for a seamless loop */
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  /* Gently move to the midpoint (halfway across the 300% canvas) */
+  50% {
+    background-position: 50% 0%;
+  }
+}
 .nav-links {
   list-style: none;
   padding: 0;
@@ -99,8 +119,6 @@ button:disabled {
 }
 
 .post-item {
-  background-color: #2a2a2a; /* Shade different from container */
-  border: 1px solid #444444; /* Updated border color */
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 4px;
