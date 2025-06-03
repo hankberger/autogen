@@ -3,20 +3,20 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: #1a1a1a; /* Dark background */
+  color: #e0e0e0; /* Light text */
 }
 
 .container {
   max-width: 960px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #242424; /* Slightly lighter dark shade */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Subtle dark theme shadow */
 }
 
 a {
-  color: #007bff;
+  color: #64b5f6; /* Lighter blue for dark backgrounds */
   text-decoration: none;
 }
 
@@ -26,21 +26,29 @@ a:hover {
 
 button {
   padding: 10px 15px;
-  border: none;
+  border: none; /* No border or subtle dark border */
   border-radius: 4px;
   cursor: pointer;
   font-size: 1em;
+  background-color: #3f51b5; /* Modern accent color */
+  color: white; /* Light text for buttons */
+  transition: background-color 0.3s ease; /* Transition for hover effects */
+}
+
+button:hover {
+  background-color: #303f9f; /* Darker shade on hover */
 }
 
 button:disabled {
-  background-color: #ccc;
+  background-color: #424242; /* Darker gray for disabled */
+  color: #666666; /* Muted text for disabled */
   cursor: not-allowed;
 }
 
 /* Navbar */
 .navbar {
-  background-color: #333;
-  color: white;
+  background-color: #1f1f1f; /* Distinct dark color for navbar */
+  color: #e0e0e0; /* Light text for navbar */
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -49,7 +57,7 @@ button:disabled {
 
 .nav-logo {
   font-size: 1.5rem;
-  color: white;
+  color: #ffffff; /* Light color for nav logo */
   font-weight: bold;
 }
 
@@ -65,13 +73,13 @@ button:disabled {
 }
 
 .nav-links a {
-  color: white;
+  color: #e0e0e0; /* Light color for nav links */
   font-size: 1rem;
 }
 
 /* Post List */
 .post-list-container h2 {
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid #444444; /* Lighter border for dark backgrounds */
   padding-bottom: 10px;
 }
 
@@ -79,8 +87,8 @@ button:disabled {
   display: inline-block;
   margin-bottom: 20px;
   padding: 10px 15px;
-  background-color: #28a745;
-  color: white;
+  background-color: #4CAF50; /* Modern green */
+  color: white; /* Light text */
   border-radius: 4px;
   text-align: center;
 }
@@ -91,30 +99,30 @@ button:disabled {
 }
 
 .post-item {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: #2a2a2a; /* Shade different from container */
+  border: 1px solid #444444; /* Updated border color */
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 4px;
 }
 
 .post-item h3 a {
-  color: #333;
+  color: #e0e0e0; /* Light and legible color */
 }
 
 .post-item p {
   font-size: 0.9em;
-  color: #555;
+  color: #cccccc; /* Updated text color */
 }
 
 .post-item small {
   font-size: 0.8em;
-  color: #777;
+  color: #aaaaaa; /* Updated text color */
 }
 
 /* Post View */
 .post-view-container h2 {
-  color: #333;
+  color: #e0e0e0; /* Light color */
 }
 
 .post-content {
@@ -135,20 +143,20 @@ button:disabled {
 
 .edit-post-link {
   padding: 8px 12px;
-  background-color: #ffc107;
-  color: #333;
+  background-color: #ff9800; /* Modern yellow/orange */
+  color: #111111; /* Dark text for contrast */
   border-radius: 4px;
 }
 
 .delete-post-button {
-  background-color: #dc3545;
-  color: white;
+  background-color: #f44336; /* Modern red */
+  color: white; /* Light text */
 }
 
 .back-to-list-link {
   display: inline-block;
   margin-top: 15px;
-  color: #007bff;
+  color: #64b5f6; /* Use new link color */
 }
 
 /* Post Form */
@@ -164,15 +172,23 @@ button:disabled {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #e0e0e0; /* Light color */
 }
 
 .form-group input[type="text"],
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #555555; /* Dark border color */
+  background-color: #333333; /* Dark background for inputs */
+  color: #e0e0e0; /* Light text color for inputs */
   border-radius: 4px;
   box-sizing: border-box; /* Ensures padding doesn't add to width */
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group textarea::placeholder {
+  color: #888888; /* Visible placeholder text */
 }
 
 .form-group textarea {
@@ -181,19 +197,18 @@ button:disabled {
 }
 
 .form-error {
-  color: red;
+  color: #ffcdd2; /* Light red/pink for errors */
   margin-bottom: 10px;
 }
 
 .submit-button {
-  background-color: #007bff;
-  color: white;
+  /* General button styles are applied */
   margin-right: 10px;
 }
 
 .cancel-button {
-  background-color: #6c757d;
-  color: white;
+  background-color: #555555; /* Neutral dark button color */
+  color: white; /* Light text */
 }
 
 /* Loading and Error states */
@@ -202,9 +217,95 @@ p {
 }
 
 p.form-error {
-  color: red;
-  background-color: #ffe0e0;
-  border: 1px solid red;
+  color: #f44336; /* Error text color */
+  background-color: #401010; /* Dark red background for error */
+  border: 1px solid #f44336; /* Error border color */
   padding: 10px;
   border-radius: 4px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    flex-direction: column; /* Stack logo and links */
+    padding: 0.5rem 1rem; /* Adjust padding */
+    align-items: flex-start; /* Align items to the start for column layout */
+  }
+
+  .nav-links {
+    flex-direction: column; /* Stack links vertically */
+    align-items: flex-start; /* Align links to the start */
+    width: 100%; /* Take full width */
+    margin-top: 1rem; /* Add space between logo and stacked links */
+  }
+
+  .nav-links li {
+    margin-left: 0; /* Remove left margin */
+    margin-bottom: 0.75rem; /* Add spacing between stacked links */
+    width: 100%; /* Ensure list items also take full width for easier tapping */
+  }
+
+  .nav-links a {
+    display: block; /* Make links block to take full width of li */
+    padding: 0.5rem 0; /* Add some padding for easier tapping */
+  }
+
+  /* Container */
+  .container {
+    padding: 10px; /* Reduce padding */
+    margin: 10px auto; /* Reduce margin */
+  }
+
+  /* Typography */
+  /* Example: Adjust h1 font size if needed, though current em should scale.
+     If global font size needs adjustment, target body in index.css or here.
+  h1 {
+    font-size: 2.5em;
+  }
+  */
+
+  /* Buttons and Links that act as buttons */
+  .create-post-link,
+  .edit-post-link {
+    width: 100%; /* Make call-to-action links full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    text-align: center; /* Ensure text is centered if not already */
+    margin-bottom: 10px; /* Adjust margin for stacked items */
+  }
+
+  .edit-post-link {
+      margin-right: 0; /* Remove right margin if it was for side-by-side layout */
+  }
+
+  .delete-post-button {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .post-actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Ensure form buttons are also full width */
+  .submit-button,
+  .cancel-button {
+    width: 100%;
+    box-sizing: border-box;
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 10px; /* Add bottom margin for spacing */
+  }
+
+  .submit-button:last-child,
+  .cancel-button:last-child {
+    margin-bottom: 0; /* Remove bottom margin for the last button in a group */
+  }
+
+  /* Adjust padding for general buttons if needed on mobile */
+  button {
+    padding: 12px 15px; /* Slightly larger padding for easier tapping */
+  }
 }
