@@ -1,42 +1,210 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: white;
+  font-size: 1rem;
+}
+
+/* Post List */
+.post-list-container h2 {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.create-post-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 4px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.post-list-container ul {
+  list-style: none;
+  padding: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.post-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.post-item h3 a {
+  color: #333;
 }
 
-.card {
-  padding: 2em;
+.post-item p {
+  font-size: 0.9em;
+  color: #555;
 }
 
-.read-the-docs {
-  color: #888;
+.post-item small {
+  font-size: 0.8em;
+  color: #777;
+}
+
+/* Post View */
+.post-view-container h2 {
+  color: #333;
+}
+
+.post-content {
+  line-height: 1.6;
+  margin-bottom: 20px;
+  white-space: pre-wrap; /* Preserve line breaks and spaces */
+}
+
+.post-actions {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.edit-post-link,
+.delete-post-button {
+  margin-right: 10px;
+}
+
+.edit-post-link {
+  padding: 8px 12px;
+  background-color: #ffc107;
+  color: #333;
+  border-radius: 4px;
+}
+
+.delete-post-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.back-to-list-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #007bff;
+}
+
+/* Post Form */
+.post-form-container h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding doesn't add to width */
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Loading and Error states */
+p {
+  font-size: 1.1em;
+}
+
+p.form-error {
+  color: red;
+  background-color: #ffe0e0;
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 4px;
 }
