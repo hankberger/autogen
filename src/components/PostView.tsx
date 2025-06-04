@@ -1,6 +1,7 @@
 // src/components/PostView.tsx
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import type { Post } from '../services/postService';
 import { getPostById, deletePost } from '../services/postService';
 
@@ -75,7 +76,7 @@ const PostView: React.FC = () => {
         />
       )}
       <h2>{post.title}</h2>
-      <p className="post-content">{post.content}</p>
+      <ReactMarkdown>{post.content}</ReactMarkdown>
       <small>Created at: {new Date(post.createdAt).toLocaleString()}</small>
       <div className="post-actions">
         <Link to={`/edit-post/${post.id}`} className="edit-post-link">
