@@ -82,3 +82,38 @@ Once both the backend and frontend servers are running:
 ---
 
 *This README provides setup and execution instructions for the blog application.*
+
+## Running with Docker and NGINX
+
+This application can be built and run using Docker, which will serve the frontend with NGINX and run the backend Node.js server. NGINX will also proxy API requests to the backend.
+
+### Prerequisites
+
+- Docker installed on your machine.
+
+### Building the Docker Image
+
+1.  Clone the repository (if you haven't already).
+2.  Navigate to the root directory of the project.
+3.  Build the Docker image:
+
+    ```bash
+    docker build -t vite-nginx-app .
+    ```
+    (You can replace `vite-nginx-app` with your preferred image name.)
+
+### Running the Docker Container
+
+1.  Once the image is built, run the container:
+
+    ```bash
+    docker run -p 8080:80 vite-nginx-app
+    ```
+    (This maps port 8080 on your host machine to port 80 in the container, where NGINX is listening. You can change `8080` to any other available port on your host.)
+
+2.  Open your browser and navigate to `http://localhost:8080` to see the application.
+    The API backend will be accessible via NGINX at `http://localhost:8080/api/...`.
+
+### Database
+
+The application uses a SQLite database (`server/blog.db`). This database file is included in the Docker image. If you make changes to the database schema or want to start with a fresh database, you will need to rebuild the image. For persistent data that survives container restarts and image rebuilds without including the DB directly in the image, you would typically use Docker volumes to mount the database file from the host machine or use an external database service.
