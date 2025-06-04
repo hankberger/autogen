@@ -1,0 +1,35 @@
+# General
+.git
+.vscode
+.idea
+*.md
+
+# Node.js
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Build artifacts
+dist
+build
+coverage
+
+# Docker specific
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Server specific (if any temporary or local files are generated there)
+server/node_modules
+# Add any other server-specific files/folders to ignore if necessary, e.g., logs, local dbs not meant for image
+# Keep server/blog.db if it's the one to be bundled, otherwise add it here if it's only for local dev
+
+# Frontend specific (if any temporary or local files are generated there)
+src # We copy src explicitly in Dockerfile, but good to have for other contexts
+public # Same for public
+# *.local files
+*.local
+
+# OS specific
+.DS_Store
+Thumbs.db
