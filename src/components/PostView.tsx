@@ -66,6 +66,14 @@ const PostView: React.FC = () => {
 
   return (
     <div className="post-view-container">
+      {post.imageUrl && (
+        <img
+          src={post.imageUrl}
+          alt={`Image for post titled ${post.title}`}
+          className="post-image" // Added a class for potential styling
+          style={{ maxWidth: '100%', height: 'auto', marginBottom: '1rem' }} // Basic inline styles
+        />
+      )}
       <h2>{post.title}</h2>
       <p className="post-content">{post.content}</p>
       <small>Created at: {new Date(post.createdAt).toLocaleString()}</small>

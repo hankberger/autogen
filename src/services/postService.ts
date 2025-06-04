@@ -6,12 +6,14 @@ export interface Post {
   id: number; // In SQLite, AUTOINCREMENT usually means number
   title: string;
   content: string;
+  imageUrl?: string; // Added
   createdAt: string; // ISO date string
 }
 
 export interface PostData {
   title: string;
   content: string;
+  imageUrl?: string; // Added
 }
 
 export const getAllPosts = async (): Promise<Post[]> => {
