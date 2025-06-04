@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .  # Frontend code and frontend.Dockerfile are in the current directory
+      dockerfile: frontend.Dockerfile
+    ports:
+      - "80:80" # Map host port 80 to container port 80 (Nginx default)
+    depends_on:
+      - backend # Optional: Ensures backend starts before frontend attempts to connect during its own build/startup if needed
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: .   # Backend code and backend.Dockerfile are in the current directory
+      dockerfile: backend.Dockerfile
+    ports:
+      - "3001:3000" # Map host port 3001 to container port 3000 (as defined in backend.Dockerfile)
+    environment:
+      - NODE_ENV=development # Example environment variable
+      - PORT=3000            # Inform the backend app which port to listen on inside the container
+    # The service name 'backend' allows it to be reached at 'http://backend:3000' from other containers in the same network.
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
