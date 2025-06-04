@@ -327,3 +327,8 @@ p.form-error {
     padding: 12px 15px; /* Slightly larger padding for easier tapping */
   }
 }
+
+.post-image{
+  border-radius: 30px;
+  object-fit: cover;
+}
