@@ -14,6 +14,7 @@ const PostForm: React.FC<PostFormProps> = ({ isEditMode }) => {
 
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
+  const [imageUrl, setImageUrl] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
@@ -26,6 +27,7 @@ const PostForm: React.FC<PostFormProps> = ({ isEditMode }) => {
           const post = await getPostById(id);
           setTitle(post.title);
           setContent(post.content);
+          setImageUrl(post.imageUrl || ''); // Add this
           setError(null);
         } catch (err) {
           setError(err instanceof Error ? err.message : 'Failed to fetch post data');
@@ -58,7 +60,7 @@ const PostForm: React.FC<PostFormProps> = ({ isEditMode }) => {
 
     setLoading(true);
     setError(null);
-    const postData: PostData = { title, content };
+    const postData: PostData = { title, content, imageUrl }; // Add imageUrl
 
     try {
       let savedPost: Post;
@@ -108,6 +110,17 @@ const PostForm: React.FC<PostFormProps> = ({ isEditMode }) => {
             onChange={(e) => setContent(e.target.value)}
             rows={10}
             disabled={loading}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="imageUrl">Image URL (Optional):</label>
+          <input
+            type="url" // Using type="url" for basic client-side validation
+            id="imageUrl"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            disabled={loading}
+            placeholder="https://example.com/image.png"
           />
         </div>
         <button type="submit" disabled={loading} className="submit-button">

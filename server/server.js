@@ -13,14 +13,14 @@ app.use(express.json());
 
 // POST /api/posts - Create a new post
 app.post('/api/posts', (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, imageUrl } = req.body;
 
   if (!title || !content) {
     return res.status(400).json({ error: 'Title and content are required' });
   }
 
-  const query = 'INSERT INTO posts (title, content) VALUES (?, ?)';
-  db.run(query, [title, content], function (err) {
+  const query = 'INSERT INTO posts (title, content, imageUrl) VALUES (?, ?, ?)';
+  db.run(query, [title, content, imageUrl || null], function (err) {
     if (err) {
       console.error('Error inserting post:', err.message);
       return res.status(500).json({ error: 'Failed to create post' });
@@ -67,10 +67,10 @@ app.get('/api/posts/:id', (req, res) => {
 // PUT /api/posts/:id - Update a post by ID
 app.put('/api/posts/:id', (req, res) => {
   const { id } = req.params;
-  const { title, content } = req.body;
+  const { title, content, imageUrl } = req.body;
 
-  if (!title && !content) {
-    return res.status(400).json({ error: 'Title or content must be provided for update' });
+  if (!title && !content && imageUrl === undefined) {
+    return res.status(400).json({ error: 'Title, content, or imageUrl must be provided for update' });
   }
 
   let fieldsToUpdate = [];
@@ -83,6 +83,10 @@ app.put('/api/posts/:id', (req, res) => {
   if (content) {
     fieldsToUpdate.push('content = ?');
     queryParams.push(content);
+  }
+  if (imageUrl !== undefined) { // Allows setting imageUrl to null or a new string
+    fieldsToUpdate.push('imageUrl = ?');
+    queryParams.push(imageUrl);
   }
   queryParams.push(id);
 
