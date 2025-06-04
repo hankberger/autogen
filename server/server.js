@@ -36,6 +36,45 @@ app.post('/api/posts', (req, res) => {
   });
 });
 
+app.post('/api/posts/:id/image', (req, res) => {
+  const postId = req.params.id; // Get the ID from the URL parameters
+  const { imageUrl } = req.body; // Get the new imageUrl from the request body
+
+  // Input validation
+  if (!postId) {
+    return res.status(400).json({ error: 'Post ID is required' });
+  }
+
+  // Ensure imageUrl is provided, or handle null/empty string if you intend to clear it
+  // For this example, we'll assume imageUrl is required to update it.
+  if (typeof imageUrl === 'undefined') {
+    return res.status(400).json({ error: 'New imageUrl is required in the request body' });
+  }
+
+  // SQL query to update the imageUrl for the specified post ID
+  const query = 'UPDATE posts SET imageUrl = ? WHERE id = ?';
+  db.run(query, [imageUrl, postId], function (err) {
+    if (err) {
+      console.error('Error updating image URL:', err.message);
+      return res.status(500).json({ error: 'Failed to update image URL' });
+    }
+
+    // Check if any row was actually updated
+    if (this.changes === 0) {
+      return res.status(404).json({ error: `Post with ID ${postId} not found or imageUrl was already the same` });
+    }
+
+    // Optionally, fetch the updated post to send it back in the response
+    db.get('SELECT * FROM posts WHERE id = ?', [postId], (err, row) => {
+      if (err) {
+        console.error('Error fetching updated post:', err.message);
+        return res.status(500).json({ error: 'Failed to retrieve updated post' });
+      }
+      res.status(200).json(row); // 200 OK for a successful update
+    });
+  });
+});
+
 // GET /api/posts - Get all posts
 app.get('/api/posts', (req, res) => {
   const query = 'SELECT * FROM posts ORDER BY createdAt DESC, id DESC';
