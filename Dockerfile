@@ -29,7 +29,7 @@ RUN npm install
 # Copy the rest of the backend application files
 COPY server/server.js server/server.js
 COPY server/database.js server/database.js
-COPY server/blog.db server/blog.db # Important: Copy the database file
+COPY server/blog.db server/blog.db
 
 # Stage 3: Production image
 FROM nginx:stable-alpine
